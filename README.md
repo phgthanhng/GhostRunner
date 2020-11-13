@@ -1,2 +1,2 @@
 # GhostRunner
-Game Programming Project using Greenfoot engine
+Game Programming Project using the Greenfoot engine
