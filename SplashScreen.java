@@ -16,6 +16,6 @@ public class SplashScreen extends World
     public SplashScreen()
     {    
         // Create a new world with 10x10 cells with a cell size of 50x50 pixels.
-        super(13, 13, 50); 
+        super(650, 650, 1); 
     }
 }
