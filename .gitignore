@@ -1,0 +1,7 @@
+# Eclipse JDT files
+.classpath
+.project
+
+# Greenfoot Libraries
+*.jar
+lib/
