@@ -1,34 +1,28 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Selector here.
+ * Selector Class for selecting a menu option
+ * set the 
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class Selector extends Actor
 {
-    private int selectX = 0;
-    private int selectY = 0;
+    private int select1[] = {0, 0};
+    private int select2[] = {0, 0};
     
-    public void selectX(int selectX)
+    /**
+     * Selector - Constructor that sets the coordinate for the two
+     * menu options to select
+     */
+    public Selector(int select1X, int select1Y,
+                    int select2X, int select2Y)
     {
-        this.selectX = selectX;
-    }
-    
-    public void selectY(int selectY)
-    {
-        this.selectY = selectY;
-    }
-    
-    public int getSelectX()
-    {
-        return selectX;
-    }
-    
-    public int getSelectY()
-    {
-        return selectY;
+        select1[0] = select1X;
+        select1[1] = select1Y;
+        select2[0] = select2X;
+        select2[1] = select2Y;
     }
     
     /**
@@ -39,15 +33,11 @@ public class Selector extends Actor
     {
         if (Greenfoot.isKeyDown("right"))
         {
-            selectX = 0;
-            selectY = 0;
+            setLocation(select1[0], select1[1]);
         }
         else if (Greenfoot.isKeyDown("left"))
         {
-            selectX = 0;
-            selectY = 0;
+            setLocation(select2[0], select2[1]);
         }
-        
-        setLocation(selectX, selectY);
     }    
 }
