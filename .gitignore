@@ -7,5 +7,5 @@
 lib/
 
 # .class/.ctxt files
-.class
-.ctxt
+*.class
+*.ctxt
