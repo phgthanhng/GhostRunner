@@ -20,6 +20,11 @@ public class HowToPlay extends World
         bgMusic.playLoop();
     }
     
+    public void act()
+    {
+        transitionToMainMenu();
+    }
+    
     private void transitionToMainMenu()
     {
         if (Greenfoot.isKeyDown("escape"))
