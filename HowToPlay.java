@@ -1,13 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HowToPlay here.
+ * HowToPlay class that shows the controls and tips on how to play the game
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Reimar Rosas) 
+ * @version (19-11-2020)
  */
 public class HowToPlay extends World
 {
+    private GreenfootSound bgMusic = new GreenfootSound("template.wav");
 
     /**
      * Constructor for objects of class HowToPlay.
@@ -15,7 +16,21 @@ public class HowToPlay extends World
      */
     public HowToPlay()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(650, 650, 1); 
+        bgMusic.playLoop();
+    }
+    
+    public void act()
+    {
+        transitionToMainMenu();
+    }
+    
+    private void transitionToMainMenu()
+    {
+        if (Greenfoot.isKeyDown("escape"))
+        {
+            bgMusic.stop();
+            Greenfoot.setWorld(new MainMenu());
+        }
     }
 }
