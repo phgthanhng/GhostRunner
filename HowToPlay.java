@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class HowToPlay here.
+ * HowToPlay class that shows the controls and tips on how to play the game
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Reimar Rosas) 
+ * @version (19-11-2020)
  */
 public class HowToPlay extends World
 {
