@@ -21,8 +21,8 @@ Classes Setup:
 			- public : Constructor MainMenu() => sets the background image and plays the background music
 			- public : prepare() => adds a selector object at the first option
 			- public : act() => calls the transitionToAnotherWorld() method
-			- private : transitionToAnotherWorld() => stop the background music, if the selector is at the designated coordinates the option and pressed enter, 
-								  set the world to a Levels instance or a How to Play instance
+			- private : transitionToAnotherWorld() => if the selector is at the designated coordinates the option and pressed enter, stop the background music
+								  and set the world to a Levels instance or a How to Play instance
 		How to Play
 			FIELDS
 			- private : GreenfootImage bg => sets the background image
@@ -40,7 +40,7 @@ Classes Setup:
 			- public : Constructor MainMenu() => sets the background image and plays the background music
 			- public : prepare() => add objects in specific location to create the map, can be done using Save the World setting
 			- public : act() => calls the transitionToAnotherWorld() method
-			- private : transitionToAnotherWorld => stop the background music, if there's no MainCharacter object in the Levels instance,  set the world to a
+			- private : transitionToAnotherWorld => if there's no MainCharacter object in the Levels instance, stop the background music and set the world to a
 								Game Lose instance, else if this object intersects an exit object, set the world to a Game Win instance
 		Game Win
 			FIELDS
@@ -50,8 +50,8 @@ Classes Setup:
 			- public : Constructor MainMenu() => sets the background image and plays the background music
 			- public : prepare() => adds a selector object at the first option
 			- public : act() => calls the transitionToAnotherWorld() method
-			- private : transitionToAnotherWorld() => stop the background music, if the selector is at the designated coordinates the option and pressed enter, 
-								  set the world to a Level1 instance or a MainMenu instance
+			- private : transitionToAnotherWorld() => if the selector is at the designated coordinates the option and pressed enter, stop the background music
+								  and set the world to a Level1 instance or a MainMenu instance
 		Game Lose
 			FIELDS
 			- private : GreenfootImage bg => sets the background image
@@ -60,8 +60,8 @@ Classes Setup:
 			- public : Constructor MainMenu() => sets the background image and plays the background music
 			- public : prepare() => adds a selector object at the first option
 			- public : act() => calls the transitionToAnotherWorld() method
-			- private : transitionToAnotherWorld() => stop the background music, if the selector is at the designated coordinates the option and pressed enter, 
-								  set the world to a previous Level's instance or a MainMenu instance
+			- private : transitionToAnotherWorld() => if the selector is at the designated coordinates the option and pressed enter, stop the background music
+								  and set the world to a previous Level's instance or a MainMenu instance
 		
 	Actor:
 		Non-Trivial:
