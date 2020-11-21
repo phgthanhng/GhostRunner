@@ -3,6 +3,8 @@ Classes Setup:
 // the same page
 
 // set the bg, sprite and bgMusic as "template.(png, jpg, wav, mp3)" for the time being, we'll decide the assets later
+// use the SimpleTimer Class for the delays, you can see the documentation if you right clicked in the Class section of the Greenfoot Window and tried to import a class
+// (p.s. cancel the window though,  i don't think we need any additional classes other than SimpleTimer)
 	World:
 		Splash Screen
 			FIELDS
@@ -39,9 +41,9 @@ Classes Setup:
 			---------------------------------------------------------------------------------------------------------------------------------------------------
 			- public : Constructor MainMenu() => sets the background image and plays the background music
 			- public : prepare() => add objects in specific location to create the map, can be done using Save the World setting
-			- public : act() => calls the transitionToAnotherWorld() method
-			- private : transitionToAnotherWorld => if there's no MainCharacter object in the Levels instance, stop the background music and set the world to a
-								Game Lose instance, else if this object intersects an exit object, set the world to a Game Win instance
+			// Call these static methods in the MainCharacter class for the two transition scenarios: Gets killed by Ghosts, or encounter an Exit
+			- public : (static) transitionToGameLoseWorld() => sets the world to a new GameLose instance
+			- public : (static) transitionToGameWinWorld() => sets the world to a new GameWin instance
 		Game Win
 			FIELDS
 			- private : GreenfootImage bg => sets the background image
@@ -92,7 +94,7 @@ Classes Setup:
 						doesn't turn because the sprite would turn too and that would look bad
 				- private : createBomb() => implements the creation of Bomb objects, if "space" is pressed, a Bomb object would be created at the character's feet
 						  (probably implemented later)
-				- private : isTouchingGhost => check if the MainCharacter object intersects with any object of the Ghosts class, if yes, remove the current object
+				- private : isTouchingGhost() => check if the MainCharacter object intersects with any object of the Ghosts class, if yes, remove the current object
 						     (syntax should be "getWorld().removeObject(this)")
 			Ghosts
 				FIELDS
@@ -151,11 +153,3 @@ Classes Setup:
 				-------------------------------------------------------------------------------------------------------------------------------------------
 				METHODS
 				- public : Constructor Selector() => sets the image
-				
-	Delay:
-		FIELDS
-		- private : Integer delayDuration => how long the delay needed to be
-		-----------------------------------------------------------------------------------------------------------------------------------------------------------
-		METHODS
-		- public : Constructor Delay() => sets the delay duration, set start time as the time when the object is created and the end time as start time + 
-						  (delayDuration * 1000), then create an empty loop that loops until current time is equal to the end time

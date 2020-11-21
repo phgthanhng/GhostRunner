@@ -31,11 +31,38 @@ public class Selector extends Actor
         //set the coordinates for the second option
         select2[0] = select2X;
         select2[1] = select2Y;
+        
+        // sets the initial location to the first option of the UI
+        setLocation(select1[0], select1[1]);
     }
     
     /**
-     * Act - do whatever the Selector wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * getSelect1() method
+     * returns an array of the coordinates specified as select1
+     *  => select1[0] = X-coordinate, select1[1] = Y-coordinate if you set the return value
+     *  of getSelect1 to an array int[] select1
+     */
+    public int[] getSelect1()
+    {
+        return select1;
+    }
+    
+    /**
+     * getSelect2() method
+     * returns an array of the coordinates specified as select2
+     *  => select2[0] = X-coordinate, select2[1] = Y-coordinate if you set the return value
+     *  of getSelect2 to an array int[] select2
+     */
+    public int[] getSelect2()
+    {
+        return select2;
+    }
+    
+    /**
+     * act() method
+     * implements the movement of the Selector object
+     *  => on default, moves to the specified right and left coordinate,
+     *  can be changed to up and down if needed
      */
     public void act() 
     {
