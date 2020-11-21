@@ -23,7 +23,7 @@ public class Level1 extends World
     }
     
     /**
-     * transitonToGameLoseWorld() method
+     * (static) transitonToGameLoseWorld() method
      * sets the world to a new GameLose instance
      *  => can be called in MainCharacter class if that object encountered
      *  a Ghosts object
