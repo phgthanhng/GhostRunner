@@ -8,43 +8,39 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level1 extends World
 {
-    GreenfootSound bgMusic = new GreenfootSound("template.wav");
+    private GreenfootImage bg = new GreenfootImage("template.png");
+    private GreenfootSound bgMusic = new GreenfootSound("template.wav");
     
     /**
-     * Constructor for objects of class Level1.
+     * Constructor for objects of class Level1
+     * sets the background image and plays the background music
      */
     public Level1()
     {    
         super(13, 13, 50); 
         bgMusic.playLoop();
-    }
-    
-    public void act()
-    {
-        transitionToAnotherWorld();
+        setBackground(bg);
     }
     
     /**
-     * transitionToAnotherWorld - transitions to one of the end results:
-     * Win or Lose
-     * ------------------------------------------------------------------
-     * Remove the character object from the current world so this method
-     * would run
+     * (static) transitonToGameLoseWorld() method
+     * sets the world to a new GameLose instance
+     *  => can be called in MainCharacter class if that object encountered
+     *  a Ghosts object
      */
-    public void transitionToAnotherWorld()
-    {        
-        MainCharacter mc = getObjects(MainCharacter.class).get(0);
-        Exit exit = getObjects(Exit.class).get(0);
-        
-        if (mc == null)
-        {
-            bgMusic.stop();
-            Greenfoot.setWorld(new GameLose());
-        }
-        else if (mc.getX() == exit.getX() && mc.getY() == exit.getY())
-        {
-            bgMusic.stop();
-            Greenfoot.setWorld(new GameWin());
-        }
+    public static void transitionToGameLoseWorld()
+    {
+        Greenfoot.setWorld(new GameLose());
+    }
+    
+    /**
+     * (static) transitionToGameWinWorld() method
+     * sets the world to a new GameWin instance
+     *  => can be called in MainCharacter class if that object encountered
+     *  an Exit object
+     */
+    public static void transitionToGameWinWorld()
+    {
+        Greenfoot.setWorld(new GameWin());
     }
 }
