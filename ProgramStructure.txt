@@ -31,7 +31,7 @@ Classes Setup:
 			- private : GreenfootSound bgMusic => sets the background music of this world
 			---------------------------------------------------------------------------------------------------------------------------------------------------
 			METHODS
-			- public : Constructor MainMenu() => sets the background image and plays the background music
+			- public : Constructor HowToPlay() => sets the background image and plays the background music
 			- public : act() => call transitionToMainMenu()
 			- private : transitionToMainMenu() => if escape key is pressed, stop background music and sets the world to a MainMenu instance
 		Levels
@@ -39,7 +39,7 @@ Classes Setup:
 			- private : GreenfootImage bg => sets the background image
 			- private : GreenfootSound bgMusic => sets the background music of this world
 			---------------------------------------------------------------------------------------------------------------------------------------------------
-			- public : Constructor MainMenu() => sets the background image and plays the background music
+			- public : Constructor Levels() => sets the background image and plays the background music
 			- public : prepare() => add objects in specific location to create the map, can be done using Save the World setting
 			// Call these static methods in the MainCharacter class for the two transition scenarios: Gets killed by Ghosts, or encounter an Exit
 			- public : (static) transitionToGameLoseWorld() => sets the world to a new GameLose instance
@@ -49,7 +49,7 @@ Classes Setup:
 			- private : GreenfootImage bg => sets the background image
 			- private : GreenfootSound bgMusic => sets the background music of this world
 			---------------------------------------------------------------------------------------------------------------------------------------------------
-			- public : Constructor MainMenu() => sets the background image and plays the background music
+			- public : Constructor GameWin() => sets the background image and plays the background music
 			- public : prepare() => adds a selector object at the first option
 			- public : act() => calls the transitionToAnotherWorld() method
 			- private : transitionToAnotherWorld() => if the selector is at the designated coordinates the option and pressed enter, stop the background music
@@ -59,7 +59,7 @@ Classes Setup:
 			- private : GreenfootImage bg => sets the background image
 			- private : GreenfootSound bgMusic => sets the background music of this world
 			---------------------------------------------------------------------------------------------------------------------------------------------------
-			- public : Constructor MainMenu() => sets the background image and plays the background music
+			- public : Constructor GameLose() => sets the background image and plays the background music
 			- public : prepare() => adds a selector object at the first option
 			- public : act() => calls the transitionToAnotherWorld() method
 			- private : transitionToAnotherWorld() => if the selector is at the designated coordinates the option and pressed enter, stop the background music
@@ -87,15 +87,14 @@ Classes Setup:
 				- public : Boolean(static) isPoweredUP => (maybe implemented later) if TRUE, bomb can damage Ghosts objects
 				-------------------------------------------------------------------------------------------------------------------------------------------
 				METHODS
-				- public : Constructor Selector() => sets the image
 				- public : Constructor MainCharacter() => sets the image
 				- public : act() => calls the movement() method, a createBomb() method, and a isTouchingGhost method 
 				- private : movement() => implements the movement of the MainCharacter object, it would be prefereable to be implemented in a way that the object
 						doesn't turn because the sprite would turn too and that would look bad
 				- private : createBomb() => implements the creation of Bomb objects, if "space" is pressed, a Bomb object would be created at the character's feet
 						  (probably implemented later)
-				- private : isTouchingGhost() => check if the MainCharacter object intersects with any object of the Ghosts class, if yes, remove the current object
-						     (syntax should be "getWorld().removeObject(this)")
+				- private : isTouchingGhost() => check if the MainCharacter object intersects with any object of the Ghosts class, if yes, transition to GameLose
+								  world
 			Ghosts
 				FIELDS
 				- private : GreenfootImage sprite => sets the sprite for the character
@@ -103,23 +102,21 @@ Classes Setup:
 				- private : Integer(final) defaultY => default starting Y location of the object
 				-------------------------------------------------------------------------------------------------------------------------------------------
 				METHODS
-				- public : Constructor Selector() => sets the image
-				- public : Constructor MainCharacter() => sets the image
-				- public : act() => calls the movement() method(AI), if(MainCharacter.isPoweredUp), call destructible() method, then respawn(probably 
-					   implemented later) method
-				- private : movement() => uses a simple AI to track to the player, we can probably use an algorithm from the internet
-				- private : destructible() => what happens if the player gets the power up; if touching a Bomb object, delay for 5 seconds then create a new Ghosts 
-						    object at default location and removes this object 
-				- private : respawn() => way of respawning to the default location, probably use the constructor to getX() and getY() at start and set a final private
-					       field to store it, then create a new Ghosts object at that location (probably implemented later)
+				- public : Constructor Ghosts() => sets the image
+				- public : act() => calls the movement() method(AI), if(MainCharacter.isPoweredUp), call destructible() method
+				- private : movement() => uses Depth First Search algorithm to track to the player
+				- private : destructible() => what happens if the player gets the power up; if touching a Bomb object, call the destroyed() method
+				- private : destroyed() => starts timer.mark() at method call, sets the currentImage to a blank png, set the location to (0, 0), after
+							  5 seconds, sets the image to sprite field and reset to default location
+				- private : generateMap() => Generates a 2D array representation of the current Level Instance, sets the traversable cells
+							     to 0, non-traversable cells to 1, traversed cells to 2, and goal cell to 9
 			Bomb + Explosion
 				FIELDS
 				- private : GreenfootImage sprite => sets the sprite for the character
 				- private : GreenfootSound soundFX => sets the sound effects when it explodes
 				-------------------------------------------------------------------------------------------------------------------------------------------
 				METHODS
-				- public : Constructor Selector() => sets the image
-				- public : Constructor MainCharacter() => sets the image
+				- public : Constructor Bomb() => sets the image
 				- public : act() => calls the explode() method
 				- private : explode() => implements a way of setting the image to an exploding bomb sprite, delay for a second, set the image to blank, then set the 
 					       image to fire, then create objects at (x--, y), (x++, y), (x, y--), (x, y++) up until it's touching a Wall type class 
@@ -128,7 +125,7 @@ Classes Setup:
 				- private : GreenfootImage sprite => sets the sprite for the character
 				-------------------------------------------------------------------------------------------------------------------------------------------
 				METHODS
-				- public : Constructor MainCharacter() => sets the image
+				- public : Constructor BreakableWalls() => sets the image
 				- public : act() => calls the breaking() method
 				- private : breaking() => implements what happens when in contact with a bomb, delay for a second then if touching a Bomb object, call isLucky() 
 						method(probably implemented later), then remove this object
@@ -153,3 +150,5 @@ Classes Setup:
 				-------------------------------------------------------------------------------------------------------------------------------------------
 				METHODS
 				- public : Constructor Selector() => sets the image
+				
+				
