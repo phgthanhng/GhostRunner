@@ -68,7 +68,7 @@ public class Ghosts extends Actor
             
             for (int p = 0; p < 2; p += 2)
             {
-                setLocation(path.get(0), path.get(1));
+                setLocation(path.get(path.size() - 4), path.get(path.size() - 3));
             }
         }
     }
