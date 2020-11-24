@@ -41,11 +41,11 @@ public class Ghosts extends Actor
     */
     public void act() 
     {
-            movement();
-            if (false) //MainCharacter.isPoweredUp
-            {
-                destructible();
-            }
+        movement();
+        if (false) //MainCharacter.isPoweredUp
+        {
+            destructible();
+        }
     }    
     
     /**
@@ -61,12 +61,13 @@ public class Ghosts extends Actor
     private void movement()
     {
         timer.mark();
+        
         if (timer.millisElapsed() >= 1000)
         {
             generateMap();
             PathFinding.searchPath(map, getX(), getY(), path);
             
-            for (int p = 0; p < 2; p += 2)
+            if (!path.isEmpty())
             {
                 setLocation(path.get(path.size() - 4), path.get(path.size() - 3));
             }
@@ -122,7 +123,8 @@ public class Ghosts extends Actor
         {
             for (int i = 0; i < map[0].length; i++)
             {
-                if (getWorld().getObjectsAt(j, i, Wall.class).isEmpty())
+                if (getWorld().getObjectsAt(j, i, BrittleWall.class).isEmpty() ||
+                    getWorld().getObjectsAt(j, i, UnbreakableWall.class).isEmpty())
                 {
                     map[j][i] = 0;
                 }
