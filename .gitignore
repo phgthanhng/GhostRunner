@@ -2,6 +2,12 @@
 .classpath
 .project
 
+# doc folder
+doc/
+
+# DS_Store
+.DS_Store
+
 # Greenfoot Libraries
 *.jar
 lib/
