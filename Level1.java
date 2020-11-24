@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level1 extends World
 {
-    private GreenfootImage bg = new GreenfootImage("template.png");
-    private GreenfootSound bgMusic = new GreenfootSound("template.wav");
+    private static GreenfootImage bg = new GreenfootImage("template.png");
+    private static GreenfootSound bgMusic = new GreenfootSound("template.wav");
     
     /**
      * Constructor for objects of class Level1
@@ -30,6 +30,7 @@ public class Level1 extends World
      */
     public static void transitionToGameLoseWorld()
     {
+        bgMusic.stop();
         Greenfoot.setWorld(new GameLose());
     }
     
@@ -41,6 +42,7 @@ public class Level1 extends World
      */
     public static void transitionToGameWinWorld()
     {
+        bgMusic.stop();
         Greenfoot.setWorld(new GameWin());
     }
 }
