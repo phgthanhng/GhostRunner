@@ -5,3 +5,7 @@
 # Greenfoot Libraries
 *.jar
 lib/
+
+# .class/.ctxt files
+*.class
+*.ctxt

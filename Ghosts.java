@@ -1,24 +1,53 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
+    
 /**
- * Write a description of class Ghosts here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+* Enemy class
+* 
+* @author (Reimar Rosas) 
+* @version (23-11-2020)
+*/
 public class Ghosts extends Actor
 {
+    private GreenfootImage sprite = new GreenfootImage("template.png"); // the sprite for the Ghost class
+        
+    // the default spawning locations for the Ghost instance
+    private final int defaultX = getX();
+    private final int defaultY = getY();
+        
+    // A 2x2 array of containing the details of the map: 0=>TraversablePath, 1=>Wall, 
+    // 2=>TraversedPath, 9=>MainCharLocation
+    private int[][] map = new int[13][13];
+        
+    private List<Integer> path = new ArrayList<Integer>(); // List of the path that must be taken by the Ghost
+        
+    private SimpleTimer timer = new SimpleTimer(); // timer for the delay
+    
     /**
-     * Act - do whatever the Ghosts wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    * Constructor for the Ghosts class.
+    * 
+    * Sets the sprite for the class.
+    */
+    public Ghosts()
+    {
+        setImage(sprite);
+    }
+    
+    /**
+    * act() method
+    * 
+    * Calls the movement() method, and calls the destructible() method
+    * if MainCharacter.isPoweredUp is set to true.
+    */
     public void act() 
     {
-        // Add your action code here.
+        movement();
+        if (false) //MainCharacter.isPoweredUp
+        {
+            destructible();
+        }
     }    
-<<<<<<< Updated upstream
-=======
-    
+
     /**
     * movement() method
     * 
@@ -94,7 +123,8 @@ public class Ghosts extends Actor
         {
             for (int i = 0; i < map[0].length; i++)
             {
-                if (getWorld().getObjectsAt(j, i, Wall.class).isEmpty())
+                if (getWorld().getObjectsAt(i, j, BrittleWall.class).isEmpty() ||
+                    getWorld().getObjectsAt(i, j, UnbreakableWall.class).isEmpty())
                 {
                     map[j][i] = 0;
                 }
@@ -111,5 +141,4 @@ public class Ghosts extends Actor
         map[goalY][goalX] = 9;
     }
 
->>>>>>> Stashed changes
 }
