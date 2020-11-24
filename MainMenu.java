@@ -18,4 +18,15 @@ public class MainMenu extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(650, 650, 1); 
     }
+    
+    /**
+ * 
+ */
+public void showTextWithBigRedFont(String message, int x, int y)
+{
+    getBackground().setFont( new  Font(50));
+    getBackground().setColor(Color.RED);
+    getBackground().drawString(message, x, y);
+}
+
 }
