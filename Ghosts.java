@@ -123,7 +123,8 @@ public class Ghosts extends Actor
         {
             for (int i = 0; i < map[0].length; i++)
             {
-                if (getWorld().getObjectsAt(j, i, Wall.class).isEmpty())
+                if (getWorld().getObjectsAt(j, i, BrittleWall.class).isEmpty() ||
+                    getWorld().getObjectsAt(j, i, UnbreakableWall.class).isEmpty())
                 {
                     map[j][i] = 0;
                 }
