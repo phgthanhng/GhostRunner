@@ -33,7 +33,7 @@ public class Selector extends Actor
         select2[1] = select2Y;
         
         // sets the initial location to the first option of the UI
-        setLocation(select1[0], select1[1]);
+        //setLocation(select1[0], select1[1]);
     }
     
     /**
