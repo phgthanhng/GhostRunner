@@ -12,7 +12,7 @@ public class Selector extends Actor
     private int select1[] = {0, 0};
     private int select2[] = {0, 0};
     
-    private GreenfootImage sprite = new GreenfootImage("template.png");
+    private GreenfootImage sprite = new GreenfootImage("Selector.png");
     
     /**
      * Selector - Constructor that sets the coordinate for the two
