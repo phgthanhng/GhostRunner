@@ -59,8 +59,17 @@ public class MainCharacter extends Actor
     public void touchGhost() 
     { 
         if (getOneIntersectingObject(Ghosts.class) != null)
-           Greenfoot.setWorld(new GameLose()); 
+           Level1.transitionToGameLoseWorld();  
            // transfer to game lose would when the main character thouch the ghost
+    }
+    
+    /**
+     * when character arrive to exit = win
+     */
+    public void touchExit() 
+    {
+        if (getOneIntersectingObject(Exit.class) != null)
+            Level1.transitionToGameWinWorld(); 
     }
     
     /**
