@@ -75,4 +75,4 @@ public class GameWin extends World
         if (select2[0] == selector.getX() && select2[1] == selector.getY())
             Greenfoot.setWorld(new  Level1()); // second selection transfer to level1 world
       }
-}
+ }
