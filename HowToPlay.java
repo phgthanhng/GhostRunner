@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class HowToPlay extends World
 {
-    private GreenfootImage bg = new GreenfootImage("how_to_play_650x650.png");
-    private GreenfootSound bgMusic = new GreenfootSound("template.wav");
+    private static GreenfootImage bg = new GreenfootImage("how_to_play_650x650.png");
+    private static GreenfootSound bgMusic = new GreenfootSound("template.wav");
 
     /**
      * Constructor for objects of class HowToPlay

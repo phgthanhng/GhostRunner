@@ -12,7 +12,7 @@ public class Selector extends Actor
     private int select1[] = {0, 0};
     private int select2[] = {0, 0};
     
-    private GreenfootImage sprite = new GreenfootImage("template.png");
+    private GreenfootImage sprite = new GreenfootImage("Selector.png");
     
     /**
      * Selector - Constructor that sets the coordinate for the two
@@ -33,7 +33,7 @@ public class Selector extends Actor
         select2[1] = select2Y;
         
         // sets the initial location to the first option of the UI
-        setLocation(select1[0], select1[1]);
+        //setLocation(select1[0], select1[1]);
     }
     
     /**

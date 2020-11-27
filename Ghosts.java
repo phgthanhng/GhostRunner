@@ -16,7 +16,7 @@ public class Ghosts extends Actor
     private final int defaultY = getY();
         
     // A 2x2 array of containing the details of the map: 0=>TraversablePath, 1=>Wall, 
-        // 2=>TraversedPath, 9=>MainCharLocation
+    // 2=>TraversedPath, 9=>MainCharLocation
     private int[][] map = new int[13][13];
         
     private List<Integer> path = new ArrayList<Integer>(); // List of the path that must be taken by the Ghost
@@ -47,7 +47,7 @@ public class Ghosts extends Actor
             destructible();
         }
     }    
-    
+
     /**
     * movement() method
     * 
@@ -123,8 +123,8 @@ public class Ghosts extends Actor
         {
             for (int i = 0; i < map[0].length; i++)
             {
-                if (getWorld().getObjectsAt(j, i, BrittleWall.class).isEmpty() ||
-                    getWorld().getObjectsAt(j, i, UnbreakableWall.class).isEmpty())
+                if (getWorld().getObjectsAt(i, j, BrittleWall.class).isEmpty() ||
+                    getWorld().getObjectsAt(i, j, UnbreakableWall.class).isEmpty())
                 {
                     map[j][i] = 0;
                 }
@@ -140,6 +140,5 @@ public class Ghosts extends Actor
 
         map[goalY][goalX] = 9;
     }
-    
-    
+
 }

@@ -9,6 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Fire extends Actor
 {
     private SimpleTimer timer = new SimpleTimer();
+    public Fire()
+    {
+        timer.mark();
+    }
     /**
     * Act - do whatever the Fire wants to do. This method is called whenever
     * the 'Act' or 'Run' button gets pressed in the environment.
@@ -23,7 +27,6 @@ public class Fire extends Actor
      */
     public void destroyed()
     {
-        timer.mark();
         if (timer.millisElapsed() == 2000)
            {
                World world = getWorld();

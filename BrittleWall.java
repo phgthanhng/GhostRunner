@@ -30,8 +30,8 @@ public class BrittleWall extends Wall
      */
     private void breaking()
     {
-        if (isTouching(Bomb.class))
-        {
+      Actor Ghosts = getOneIntersectingObject(Ghosts.class);
+      if (Ghosts!= null) {
             timer.mark();
             if (timer.millisElapsed() == 1000)
             {
@@ -45,8 +45,8 @@ public class BrittleWall extends Wall
      */
     private void isLucky()
     {
-        int chance = Greenfoot.getRandomNumber(1);
-        if (chance == 1)
+        int chance = Greenfoot.getRandomNumber(10);
+        if (chance == 10)
         {
             World world = getWorld();
             world.removeObject(this);
