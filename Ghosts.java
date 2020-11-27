@@ -109,7 +109,7 @@ public class Ghosts extends Actor
             setImage(sprite);
             setLocation(defaultX, defaultY);
         }
-    }
+     }
     
     /**
      * generateMap() method
